@@ -1,0 +1,15 @@
+{#
+  Partial: chart_data.html
+  Purpose: HTMX partial that re-renders the JSON data island consumed by
+           Chart.js for the sentiment over-time chart.  The main page's
+           JavaScript reads the #sd-chart-json element on each htmx:afterSwap
+           event and calls chart.update() to reflect fresh data without a
+           full page reload.
+  Context variables:
+    chart_data_json — str  JSON string: {"labels": [...], "values": [...]}
+    keyword         — str  active monitoring keyword (for aria-label)
+    signals         — list last signals used to compute chart data
+#}
+<script id="sd-chart-json"
+        type="application/json"
+        aria-label="Sentiment time-series data for {{ keyword }}">{{ chart_data_json }}</script>
